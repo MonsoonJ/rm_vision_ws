@@ -23,10 +23,10 @@ cd .. && cd .. && cd ..
 
 
 #流程命令
-conda activate recogn 	#环境
+conda activate recogn && source install/setup.bash	#环境
 colcon build && source install/setup.bash	#编译
 
-ros2 launch rm_bringup.launch.py	#机械臂驱动
+ros2 launch rm_bringup_lite.launch.py	#机械臂驱动
 
 ros2 run vi_grab yolo_rs_publisher	#yolo发布
 
