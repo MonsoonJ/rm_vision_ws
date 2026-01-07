@@ -73,22 +73,22 @@ class GraspExecutorPick(Node):
 
     #运动阶段
 
-    def pre_grasp(self, obj: ObjectInfo):
-        approach_dx = 0.12
-        approach_dz = 0.10
-        min_z = 0.35
+    # def pre_grasp(self, obj: ObjectInfo):
+    #     approach_dx = 0.12
+    #     approach_dz = 0.10
+    #     min_z = 0.35
 
-        cmd = Movejp()
-        cmd.pose.position.x = obj.x - approach_dx
-        cmd.pose.position.y = obj.y
-        cmd.pose.position.z = max(obj.z + approach_dz, min_z)
-        cmd.pose.orientation = self.current_pose.orientation
-        cmd.speed = 10
+    #     cmd = Movejp()
+    #     cmd.pose.position.x = obj.x - approach_dx
+    #     cmd.pose.position.y = obj.y
+    #     cmd.pose.position.z = max(obj.z + approach_dz, min_z)
+    #     cmd.pose.orientation = self.current_pose.orientation
+    #     cmd.speed = 30
 
-        self.movejp_pub.publish(cmd)
-        self.get_logger().info('Pre-grasp pose sent.')
+    #     self.movejp_pub.publish(cmd)
+    #     self.get_logger().info('Pre-grasp pose sent.')
 
-        self.create_timer(2.0, self.linear_approach)
+    #     self.create_timer(2.0, self.linear_approach)
 
     def linear_approach(self):
         obj = self.target_obj
@@ -98,7 +98,7 @@ class GraspExecutorPick(Node):
         cmd.pose.position.y = obj.y
         cmd.pose.position.z = obj.z
         cmd.pose.orientation = self.current_pose.orientation
-        cmd.speed = 10
+        cmd.speed = 30
 
         self.movel_pub.publish(cmd)
         self.get_logger().info('Linear approach sent.')
@@ -123,7 +123,7 @@ class GraspExecutorPick(Node):
         cmd.pose.position.y = obj.y
         cmd.pose.position.z = obj.z + 0.10   #垂直上抬
         cmd.pose.orientation = self.current_pose.orientation
-        cmd.speed = 10
+        cmd.speed = 30
 
         self.movel_pub.publish(cmd)
         self.get_logger().info('Retreat motion sent. Grasp cycle complete.')
