@@ -53,7 +53,7 @@ class YoloRealSensePublisher(Node):
         self.pub = self.create_publisher(ObjectInfo, '/object_info', 10)
 
         #定时器（30Hz）
-        self.timer = self.create_timer(1.0 / 30.0, self.timer_callback)
+        self.timer = self.create_timer(1.0 / 10.0, self.timer_callback)
 
         self.get_logger().info('YOLO RealSense node started.')
 

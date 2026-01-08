@@ -36,6 +36,6 @@ python3 src/vi_grab/vi_grab/grasp_executor.py	#执行
 
 python3 gripper_arm_sleep.py 
 
-
-
+一键启动
+python3 src/vi_grab/vi_grab/start.launch.py
 
